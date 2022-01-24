@@ -32,6 +32,7 @@ const App = () => {
 			.map(() => Math.floor(Math.random() * 16).toString(16))
 			.join('');
 		const hexCode = `#${randomHex}`;
+		setColor(hexCode);
 		const colorList = new Values(hexCode).all(10);
 		setColorList(colorList);
 	};
