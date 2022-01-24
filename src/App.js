@@ -88,7 +88,6 @@ const App = () => {
 					);
 				})}
 			</div>
-
 			{error && <ErrorModal closeModal={closeModal} />}
 		</main>
 	);
