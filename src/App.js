@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import SingleColor from "./SingleColor";
+import React, { useState } from 'react';
+import SingleColor from './SingleColor';
 
-import { FaRandom, FaSearch } from "react-icons/fa";
+import { FaRandom, FaSearch } from 'react-icons/fa';
 
-import Values from "values.js";
+import Values from 'values.js';
 
 const App = () => {
-	const [color, setColor] = useState("");
-	const [no, setNo] = useState("");
+	const [color, setColor] = useState('');
+	const [no, setNo] = useState('');
 	const [error, setError] = useState(false);
-	const [colorList, setColorList] = useState(new Values("#451017").all(10));
+	const [colorList, setColorList] = useState(new Values('#451017').all(10));
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -20,7 +20,7 @@ const App = () => {
 			}
 			const colorList = new Values(color).all(number);
 			setColorList(colorList);
-			setColor("");
+			setColor('');
 		} catch (error) {
 			setError(true);
 			console.log(error);
@@ -30,7 +30,7 @@ const App = () => {
 	const handleRandom = () => {
 		const randomHex = [...Array(6)]
 			.map(() => Math.floor(Math.random() * 16).toString(16))
-			.join("");
+			.join('');
 		const hexCode = `#${randomHex}`;
 		const colorList = new Values(hexCode).all(10);
 		setColorList(colorList);
