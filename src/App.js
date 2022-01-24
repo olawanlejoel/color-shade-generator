@@ -8,7 +8,7 @@ import Values from 'values.js';
 const App = () => {
 	const [color, setColor] = useState('');
 	const [no, setNo] = useState('');
-	const [error, setError] = useState(false);
+	// const [error, setError] = useState(false);
 	const [colorList, setColorList] = useState(new Values('#451017').all(10));
 
 	const handleSubmit = (e) => {
@@ -22,7 +22,7 @@ const App = () => {
 			setColorList(colorList);
 			setColor('');
 		} catch (error) {
-			setError(true);
+			// setError(true);
 			console.log(error);
 		}
 	};
