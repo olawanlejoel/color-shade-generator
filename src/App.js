@@ -4,25 +4,25 @@ import SingleColor from './SingleColor';
 import { FaRandom, FaSearch } from 'react-icons/fa';
 
 import Values from 'values.js';
+import ErrorModal from './ErrorModal';
 
 const App = () => {
-	const [color, setColor] = useState('');
-	const [no, setNo] = useState('');
-	// const [error, setError] = useState(false);
-	const [colorList, setColorList] = useState(new Values('#451017').all(10));
+	let defaultColor = '#451017';
+	const [color, setColor] = useState(defaultColor);
+	const [no, setNo] = useState(10);
+	const [error, setError] = useState(false);
+	const [colorList, setColorList] = useState(new Values(defaultColor).all(no));
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		try {
-			let number = 10;
-			if (no) {
-				number = parseInt(no);
-			}
-			const colorList = new Values(color).all(number);
+			setError(false);
+			const colorList = new Values(color).all(no);
 			setColorList(colorList);
 			setColor('');
+			setNo('');
 		} catch (error) {
-			// setError(true);
+			setError(true);
 			console.log(error);
 		}
 	};
@@ -34,6 +34,10 @@ const App = () => {
 		const hexCode = `#${randomHex}`;
 		const colorList = new Values(hexCode).all(10);
 		setColorList(colorList);
+	};
+
+	const closeModal = () => {
+		setError(false);
 	};
 
 	return (
@@ -84,6 +88,8 @@ const App = () => {
 					);
 				})}
 			</div>
+
+			{error && <ErrorModal closeModal={closeModal} />}
 		</main>
 	);
 };
